@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, Terminal, ChevronRight, ShieldCheck } from 'lucide-react';
+import { Terminal, ChevronRight, ShieldCheck } from 'lucide-react';
 import Glimpse3D from '../components/Glimpse3D';
 import Phish3D from '../components/Phish3D';
 import AI3D from '../components/AI3D';

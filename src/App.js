@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Terminal, User, Rocket, Shield, Database, Cpu, MessageSquare } from 'lucide-react';
+import { Terminal, User, Rocket, Shield, Cpu } from 'lucide-react';
 import Home from './pages/Home';
 import Intel from './pages/Intel';
 import Missions from './pages/Missions';
