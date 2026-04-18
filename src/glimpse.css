@@ -1,0 +1,61 @@
+.glimpse-wrapper {
+  height: 450px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  perspective: 2000px;
+  margin: 20px 0;
+}
+
+.orbital-system {
+  width: 250px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+.orbital-spinner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  transform-style: preserve-3d;
+  animation: rotateOrbital 25s infinite linear;
+}
+
+.orbital-pane {
+  position: absolute;
+  width: 280px;
+  height: 180px;
+  left: -15px;
+  top: 0;
+  border: 1px solid rgba(6, 182, 212, 0.4);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.2);
+}
+
+.pane-content {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.base-emitter {
+  width: 200px;
+  height: 10px;
+  background: #06b6d4;
+  margin-top: 140px;
+  filter: blur(25px);
+  border-radius: 50%;
+  box-shadow: 0 0 60px #06b6d4;
+  opacity: 0.4;
+}
+
+@keyframes rotateOrbital {
+  from { transform: rotateY(0deg) rotateX(-5deg); }
+  to { transform: rotateY(360deg) rotateX(-5deg); }
+}
