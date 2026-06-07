@@ -10,7 +10,7 @@ import {
   Terminal, 
   Activity // Using Activity as a safe alternative to Linkedin
 } from 'lucide-react';
-import profilePic from '../profile.jpg'; 
+import profilePic from '../profile.jpeg'; 
 
 export default function Home() {
   return (
