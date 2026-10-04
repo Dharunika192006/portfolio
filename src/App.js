@@ -13,7 +13,8 @@ import {
   ArrowUp,
   Menu,
   X,
-  ExternalLink
+  ExternalLink,
+  ChevronRight
 } from 'lucide-react';
 
 import Home from './pages/Home';
@@ -34,13 +35,15 @@ export default function App() {
 
 
   // ==========================================================
-  // SHOW BACK TO TOP BUTTON
+  // SCROLL DETECTION
   // ==========================================================
 
   useEffect(() => {
 
     const handleScroll = () => {
+
       setShowTop(window.scrollY > 600);
+
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -58,11 +61,11 @@ export default function App() {
 
   const scrollToSection = (id) => {
 
-    const section = document.getElementById(id);
+    const element = document.getElementById(id);
 
-    if (section) {
+    if (element) {
 
-      section.scrollIntoView({
+      element.scrollIntoView({
         behavior: 'smooth',
         block: 'start'
       });
@@ -70,6 +73,7 @@ export default function App() {
     }
 
     setMenuOpen(false);
+
   };
 
 
@@ -79,14 +83,15 @@ export default function App() {
 
 
       {/* ======================================================
-          BACKGROUND SYSTEM GRID
+          FIXED CYBER BACKGROUND
       ====================================================== */}
 
       <div className="fixed inset-0 pointer-events-none z-0">
 
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(8,47,73,0.35),transparent_45%)]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_15%,rgba(8,47,73,0.35),transparent_45%)]"></div>
 
-        <div className="absolute inset-0 opacity-[0.035]"
+        <div
+          className="absolute inset-0 opacity-[0.035]"
           style={{
             backgroundImage: `
               linear-gradient(rgba(34,211,238,0.5) 1px, transparent 1px),
@@ -103,7 +108,7 @@ export default function App() {
 
 
       {/* ======================================================
-          DESKTOP NAVIGATION
+          NAVIGATION
       ====================================================== */}
 
       <header className="fixed top-0 left-0 right-0 z-[100]">
@@ -112,8 +117,12 @@ export default function App() {
 
           <div className="max-w-7xl mx-auto">
 
-            <div className="bg-[#020817]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.05)]">
+            <div className="bg-[#020817]/85 backdrop-blur-xl border border-cyan-500/20 rounded-2xl shadow-[0_0_35px_rgba(6,182,212,0.06)]">
 
+
+              {/* ==================================================
+                  NAVBAR
+              ================================================== */}
 
               <div className="h-16 px-4 md:px-6 flex items-center justify-between">
 
@@ -125,7 +134,7 @@ export default function App() {
                   className="flex items-center gap-3 group"
                 >
 
-                  <div className="w-9 h-9 border border-cyan-500/40 rounded-lg flex items-center justify-center group-hover:border-cyan-400 transition-all">
+                  <div className="w-9 h-9 border border-cyan-500/40 rounded-lg flex items-center justify-center group-hover:border-cyan-400 group-hover:bg-cyan-500/10 transition-all">
 
                     <Terminal
                       size={17}
@@ -133,6 +142,7 @@ export default function App() {
                     />
 
                   </div>
+
 
                   <div className="text-left">
 
@@ -155,7 +165,7 @@ export default function App() {
 
 
 
-                {/* DESKTOP MENU */}
+                {/* DESKTOP NAV */}
 
                 <nav className="hidden md:flex items-center gap-1">
 
@@ -221,7 +231,7 @@ export default function App() {
 
 
               {/* ==================================================
-                  MOBILE MENU
+                  MOBILE NAVIGATION
               ================================================== */}
 
               {menuOpen && (
@@ -273,7 +283,7 @@ export default function App() {
 
 
       {/* ======================================================
-          MAIN SCROLLING PORTFOLIO
+          MAIN SINGLE-SCROLL PORTFOLIO
       ====================================================== */}
 
       <main className="relative z-10">
@@ -300,10 +310,13 @@ export default function App() {
 
         <section
           id="intel"
-          className="scroll-mt-24 border-t border-cyan-500/5"
+          className="scroll-mt-24 border-t border-cyan-500/10"
         >
 
-          <SectionMarker label="01 // INTEL" />
+          <SectionHeader
+            number="01"
+            label="TECH_INTEL"
+          />
 
           <Intel />
 
@@ -317,10 +330,13 @@ export default function App() {
 
         <section
           id="missions"
-          className="scroll-mt-24 border-t border-cyan-500/5"
+          className="scroll-mt-24 border-t border-cyan-500/10"
         >
 
-          <SectionMarker label="02 // MISSIONS" />
+          <SectionHeader
+            number="02"
+            label="MISSION_LOGS"
+          />
 
           <Missions />
 
@@ -329,15 +345,18 @@ export default function App() {
 
 
         {/* ====================================================
-            ARCHIVES
+            RECORDS
         ==================================================== */}
 
         <section
           id="records"
-          className="scroll-mt-24 border-t border-cyan-500/5"
+          className="scroll-mt-24 border-t border-cyan-500/10"
         >
 
-          <SectionMarker label="03 // ARCHIVES" />
+          <SectionHeader
+            number="03"
+            label="ARCHIVES"
+          />
 
           <Records />
 
@@ -351,10 +370,13 @@ export default function App() {
 
         <section
           id="achievements"
-          className="scroll-mt-24 border-t border-cyan-500/5"
+          className="scroll-mt-24 border-t border-cyan-500/10"
         >
 
-          <SectionMarker label="04 // ACHIEVEMENTS" />
+          <SectionHeader
+            number="04"
+            label="COMBAT_RECORDS"
+          />
 
           <Achievements />
 
@@ -368,7 +390,7 @@ export default function App() {
 
         <section
           id="contact"
-          className="scroll-mt-24 border-t border-cyan-500/5"
+          className="scroll-mt-24 border-t border-cyan-500/10"
         >
 
           <ContactSection />
@@ -393,7 +415,7 @@ export default function App() {
 
             <div className="text-[8px] text-cyan-500/30 uppercase tracking-widest">
 
-              React // Framer Motion // 2026
+              REACT // AI // DATA // SOFTWARE
 
             </div>
 
@@ -412,10 +434,11 @@ export default function App() {
 
 
       {/* ======================================================
-          FLOATING SOCIAL BAR
+          FLOATING SOCIAL MEDIA
       ====================================================== */}
 
       <div className="hidden md:flex fixed left-5 bottom-8 z-[90] flex-col gap-3">
+
 
         <SocialButton
           href="https://github.com/Dharunika192006"
@@ -423,11 +446,13 @@ export default function App() {
           label="GITHUB"
         />
 
+
         <SocialButton
           href="https://www.linkedin.com/in/dharunika-balamoorthy-43a027365/"
           icon={<Linkedin size={15} />}
           label="LINKEDIN"
         />
+
 
         <SocialButton
           href="mailto:dharunikabalamoorthy@gmail.com"
@@ -460,12 +485,13 @@ export default function App() {
     </div>
 
   );
+
 }
 
 
 
 // ============================================================
-// NAV BUTTON
+// DESKTOP NAV BUTTON
 // ============================================================
 
 function NavButton({ icon, label, onClick }) {
@@ -490,7 +516,7 @@ function NavButton({ icon, label, onClick }) {
 
 
 // ============================================================
-// MOBILE NAV
+// MOBILE NAV BUTTON
 // ============================================================
 
 function MobileNav({ label, onClick }) {
@@ -499,7 +525,7 @@ function MobileNav({ label, onClick }) {
 
     <button
       onClick={onClick}
-      className="w-full text-left px-4 py-3 rounded-lg text-[10px] font-bold tracking-widest text-white/60 hover:text-cyan-400 hover:bg-cyan-500/10"
+      className="w-full text-left px-4 py-3 rounded-lg text-[10px] font-bold tracking-widest text-white/60 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
     >
 
       {label}
@@ -513,20 +539,24 @@ function MobileNav({ label, onClick }) {
 
 
 // ============================================================
-// SECTION MARKER
+// SECTION HEADER
 // ============================================================
 
-function SectionMarker({ label }) {
+function SectionHeader({ number, label }) {
 
   return (
 
-    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-10">
+    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 md:pt-16">
 
       <div className="flex items-center gap-3">
 
+        <span className="text-[8px] text-cyan-500/40 font-mono">
+          {number}
+        </span>
+
         <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
 
-        <span className="text-[8px] md:text-[9px] font-bold tracking-[0.4em] text-cyan-500/50 uppercase">
+        <span className="text-[8px] md:text-[9px] font-bold tracking-[0.4em] text-cyan-500/60 uppercase">
 
           {label}
 
@@ -557,7 +587,7 @@ function SocialButton({ href, icon, label }) {
       target="_blank"
       rel="noopener noreferrer"
       title={label}
-      className="group w-10 h-10 rounded-xl border border-cyan-500/20 bg-black/60 backdrop-blur-md flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition-all"
+      className="group w-10 h-10 rounded-xl border border-cyan-500/20 bg-black/70 backdrop-blur-md flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition-all"
     >
 
       {icon}
@@ -578,9 +608,10 @@ function ContactSection() {
 
   return (
 
-    <div className="min-h-[70vh] flex items-center px-6 md:px-10 py-24">
+    <div className="min-h-[75vh] flex items-center px-6 md:px-10 py-24">
 
       <div className="max-w-5xl mx-auto w-full">
+
 
         <div className="text-center mb-14">
 
@@ -594,7 +625,9 @@ function ContactSection() {
 
             Let's
 
-            <span className="text-cyan-400"> Connect</span>
+            <span className="text-cyan-400">
+              {' '}Connect
+            </span>
 
           </h2>
 
@@ -610,17 +643,20 @@ function ContactSection() {
 
 
 
-        <div className="grid md:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 gap-5">
 
 
           <a
             href="https://github.com/Dharunika192006"
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+            className="group p-7 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
           >
 
-            <Github className="text-cyan-400 mb-5" />
+            <Github
+              className="text-cyan-400 mb-6"
+              size={24}
+            />
 
             <div className="text-white font-bold text-sm">
               GITHUB
@@ -630,6 +666,11 @@ function ContactSection() {
               VIEW_SOURCE_CODE
             </div>
 
+            <ChevronRight
+              size={14}
+              className="mt-5 text-white/20 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
+            />
+
           </a>
 
 
@@ -638,10 +679,13 @@ function ContactSection() {
             href="https://www.linkedin.com/in/dharunika-balamoorthy-43a027365/"
             target="_blank"
             rel="noopener noreferrer"
-            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+            className="group p-7 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
           >
 
-            <Linkedin className="text-cyan-400 mb-5" />
+            <Linkedin
+              className="text-cyan-400 mb-6"
+              size={24}
+            />
 
             <div className="text-white font-bold text-sm">
               LINKEDIN
@@ -651,16 +695,24 @@ function ContactSection() {
               PROFESSIONAL_NETWORK
             </div>
 
+            <ChevronRight
+              size={14}
+              className="mt-5 text-white/20 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
+            />
+
           </a>
 
 
 
           <a
             href="mailto:dharunikabalamoorthy@gmail.com"
-            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+            className="group p-7 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
           >
 
-            <Mail className="text-cyan-400 mb-5" />
+            <Mail
+              className="text-cyan-400 mb-6"
+              size={24}
+            />
 
             <div className="text-white font-bold text-sm">
               EMAIL
@@ -669,6 +721,11 @@ function ContactSection() {
             <div className="text-[9px] text-white/30 mt-2">
               START_A_CONVERSATION
             </div>
+
+            <ChevronRight
+              size={14}
+              className="mt-5 text-white/20 group-hover:text-cyan-400 group-hover:translate-x-1 transition-all"
+            />
 
           </a>
 
@@ -682,7 +739,7 @@ function ContactSection() {
             href="https://timely-fox-fcdcc8.netlify.app/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-black rounded-xl text-[10px] font-black tracking-widest hover:bg-white transition-all"
+            className="inline-flex items-center gap-3 px-6 py-3 bg-cyan-500 text-black rounded-xl text-[10px] font-black tracking-widest hover:bg-white transition-all"
           >
 
             VIEW_LIVE_NIDS_PROJECT
