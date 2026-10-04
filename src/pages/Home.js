@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { motion } from 'framer-motion';
 
 import {
@@ -8,32 +7,21 @@ import {
   ChevronRight,
   Cpu,
   Code2,
-  Terminal,
   Activity,
-  Mail,
-  Github,
-  Linkedin
+  Mail
 } from 'lucide-react';
 
 import profilePic from '../profilee.jpg';
 
-
 export default function Home() {
-
-
   const scrollTo = (id) => {
-
     document.getElementById(id)?.scrollIntoView({
       behavior: 'smooth'
     });
-
   };
 
-
   return (
-
     <div className="min-h-screen flex items-center justify-center p-6 md:p-12 pt-28 overflow-hidden bg-transparent">
-
 
       {/* ======================================================
           BACKGROUND GLOW
@@ -41,14 +29,11 @@ export default function Home() {
 
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
 
-
-
       {/* ======================================================
           CONTENT
       ====================================================== */}
 
       <div className="max-w-6xl w-full grid lg:grid-cols-2 gap-12 lg:gap-20 items-center z-10">
-
 
         {/* ====================================================
             PROFILE IMAGE
@@ -59,28 +44,23 @@ export default function Home() {
             opacity: 0,
             x: -30
           }}
-
           animate={{
             opacity: 1,
             x: 0
           }}
-
           transition={{
             duration: 0.8
           }}
-
           className="relative flex justify-center lg:justify-end"
         >
 
           <div className="relative group">
-
 
             {/* CORNERS */}
 
             <div className="absolute -top-3 -left-3 w-10 h-10 border-t border-l border-cyan-500/50"></div>
 
             <div className="absolute -bottom-3 -right-3 w-10 h-10 border-b border-r border-cyan-500/50"></div>
-
 
             {/* IMAGE */}
 
@@ -92,9 +72,7 @@ export default function Home() {
                 className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity"
               />
 
-
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-cyan-500/5"></div>
-
 
               {/* SCAN */}
 
@@ -102,29 +80,23 @@ export default function Home() {
                 animate={{
                   y: [0, 300, 0]
                 }}
-
                 transition={{
                   duration: 5,
                   repeat: Infinity,
                   ease: 'linear'
                 }}
-
                 className="absolute left-0 right-0 top-0 h-px bg-cyan-400/60 shadow-[0_0_12px_rgba(34,211,238,0.8)]"
               />
-
 
               <div className="absolute bottom-3 left-3">
 
                 <div className="px-2 py-1 bg-cyan-600 text-white text-[8px] font-bold uppercase tracking-[0.2em] rounded-sm">
-
                   READY_TO_EXPLORE
-
                 </div>
 
               </div>
 
             </div>
-
 
             {/* STATUS */}
 
@@ -142,8 +114,6 @@ export default function Home() {
 
         </motion.div>
 
-
-
         {/* ====================================================
             PROFILE INFORMATION
         ==================================================== */}
@@ -153,20 +123,16 @@ export default function Home() {
             opacity: 0,
             x: 30
           }}
-
           animate={{
             opacity: 1,
             x: 0
           }}
-
           transition={{
             duration: 0.8,
             delay: 0.15
           }}
-
           className="text-left"
         >
-
 
           {/* TOP LABEL */}
 
@@ -175,14 +141,10 @@ export default function Home() {
             <span className="h-px w-7 bg-cyan-500/50"></span>
 
             <span className="text-cyan-400 text-[9px] font-bold tracking-[0.3em] uppercase">
-
               Institutional_Link // Mepco
-
             </span>
 
           </div>
-
-
 
           {/* NAME */}
 
@@ -200,7 +162,6 @@ export default function Home() {
 
           </h1>
 
-
           <h2 className="text-xl md:text-2xl font-bold text-white/80 mb-5">
 
             Crafting the{' '}
@@ -210,8 +171,6 @@ export default function Home() {
             </span>
 
           </h2>
-
-
 
           {/* DESCRIPTION */}
 
@@ -243,12 +202,11 @@ export default function Home() {
 
           </p>
 
-
-
           {/* SOCIAL LINKS */}
 
           <div className="flex flex-wrap gap-3 mb-8 pl-5">
 
+            {/* GITHUB */}
 
             <a
               href="https://github.com/Dharunika192006"
@@ -257,20 +215,17 @@ export default function Home() {
               className="group flex items-center gap-2.5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
             >
 
-              <Github
-                size={14}
-                className="text-white/70 group-hover:text-cyan-400"
-              />
+             <span className="text-[11px] font-black text-white/70 group-hover:text-cyan-400">
+  GH
+</span>
 
               <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 group-hover:text-cyan-400">
-
                 GitHub
-
               </span>
 
             </a>
 
-
+            {/* LINKEDIN */}
 
             <a
               href="https://www.linkedin.com/in/dharunika-balamoorthy-43a027365/"
@@ -279,20 +234,20 @@ export default function Home() {
               className="group flex items-center gap-2.5 px-4 py-2.5 bg-white/5 border border-white/10 rounded-lg hover:border-cyan-500/50 hover:bg-cyan-500/10 transition-all"
             >
 
-              <Linkedin
-                size={14}
-                className="text-blue-400 group-hover:text-cyan-400"
-              />
+              {/* LinkedIn icon replacement */}
+              <span
+                className="w-[14px] h-[14px] flex items-center justify-center rounded-[2px] bg-blue-500 text-white text-[9px] font-black leading-none group-hover:bg-cyan-400 transition-colors"
+              >
+                in
+              </span>
 
               <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 group-hover:text-cyan-400">
-
                 LinkedIn
-
               </span>
 
             </a>
 
-
+            {/* EMAIL */}
 
             <a
               href="mailto:dharunikabalamoorthy@gmail.com"
@@ -305,21 +260,18 @@ export default function Home() {
               />
 
               <span className="text-[9px] font-bold tracking-[0.2em] uppercase text-white/70 group-hover:text-cyan-400">
-
                 Email
-
               </span>
 
             </a>
 
           </div>
 
-
-
           {/* ACTION CARDS */}
 
           <div className="grid gap-3 max-w-lg">
 
+            {/* PROJECTS */}
 
             <button
               onClick={() => scrollTo('missions')}
@@ -336,15 +288,11 @@ export default function Home() {
                 <div>
 
                   <div className="text-white font-bold text-[10px] uppercase tracking-widest">
-
                     Tactical_Missions
-
                   </div>
 
                   <div className="text-[8px] opacity-30 uppercase tracking-tighter">
-
                     Explore_Project_Archives
-
                   </div>
 
                 </div>
@@ -358,7 +306,7 @@ export default function Home() {
 
             </button>
 
-
+            {/* RECORDS */}
 
             <button
               onClick={() => scrollTo('records')}
@@ -375,15 +323,11 @@ export default function Home() {
                 <div>
 
                   <div className="text-white font-bold text-[10px] uppercase tracking-widest">
-
                     Combat_Records
-
                   </div>
 
                   <div className="text-[8px] opacity-30 uppercase tracking-tighter">
-
                     Experience_And_Achievements
-
                   </div>
 
                 </div>
@@ -399,12 +343,11 @@ export default function Home() {
 
           </div>
 
-
-
           {/* STATS */}
 
           <div className="mt-8 flex flex-wrap gap-8 border-t border-white/5 pt-6 pl-5">
 
+            {/* CGPA */}
 
             <div className="flex items-center gap-2">
 
@@ -427,7 +370,7 @@ export default function Home() {
 
             </div>
 
-
+            {/* GRADUATION */}
 
             <div className="flex items-center gap-2">
 
@@ -450,7 +393,7 @@ export default function Home() {
 
             </div>
 
-
+            {/* INTEREST */}
 
             <div className="flex items-center gap-2">
 
@@ -479,20 +422,16 @@ export default function Home() {
 
       </div>
 
-
-
       {/* SCROLL INDICATOR */}
 
       <motion.div
         animate={{
           y: [0, 8, 0]
         }}
-
         transition={{
           duration: 1.8,
           repeat: Infinity
         }}
-
         className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center gap-2 text-cyan-500/30"
       >
 
@@ -508,7 +447,5 @@ export default function Home() {
       </motion.div>
 
     </div>
-
   );
-
 }
