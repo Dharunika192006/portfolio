@@ -545,7 +545,7 @@ export default function Missions() {
 
   return (
 
-    <div className="p-4 md:p-10 pt-28 max-w-7xl mx-auto mb-20">
+    <div className="min-h-screen p-4 md:p-10 pt-12 md:pt-16 pb-28 max-w-7xl mx-auto">
 
 
       {/* ======================================================
