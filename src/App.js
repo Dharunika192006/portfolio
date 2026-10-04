@@ -1,55 +1,702 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { Terminal, User, Rocket, Shield, Cpu } from 'lucide-react';
+import React, { useEffect, useState } from 'react';
+
+import {
+  Terminal,
+  User,
+  Rocket,
+  Cpu,
+  Shield,
+  Award,
+  Mail,
+  Github,
+  Linkedin,
+  ArrowUp,
+  Menu,
+  X,
+  ExternalLink
+} from 'lucide-react';
+
 import Home from './pages/Home';
 import Intel from './pages/Intel';
 import Missions from './pages/Missions';
 import Records from './pages/Records';
+import Achievements from './pages/Achievements';
+
+
+// ============================================================
+// MAIN APP
+// ============================================================
 
 export default function App() {
-  return (
-    <Router>
-      <div className="flex min-h-screen bg-[#020617] text-cyan-50 font-mono">
-        {/* SIDEBAR HUD */}
-        <aside className="w-20 md:w-64 border-r border-cyan-500/20 bg-black/40 backdrop-blur-xl flex flex-col z-50 fixed h-full">
-          <div className="p-6 border-b border-cyan-500/20 text-center">
-            <h1 className="hidden md:block text-xl font-black tracking-tighter">DHARUNIKA<span className="text-cyan-500">.B</span></h1>
-            <Terminal className="md:hidden mx-auto text-cyan-500" />
-          </div>
-          <nav className="flex-1 p-4 space-y-4">
-            <NavItem to="/" icon={<User size={20}/>} label="The_Bridge" />
-            <NavItem to="/intel" icon={<Cpu size={20}/>} label="Tech_Intel" />
-            <NavItem to="/missions" icon={<Rocket size={20}/>} label="Mission_Logs" />
-            <NavItem to="/records" icon={<Shield size={20}/>} label="Archives" />
-          </nav>
-          <div className="p-4 border-t border-cyan-500/10 opacity-30 text-[8px] text-center uppercase tracking-widest">
-            System v4.0.2 // Madurai Sector
-          </div>
-        </aside>
 
-        {/* MAIN DISPLAY WINDOW */}
-        <main className="flex-1 ml-20 md:ml-64 relative overflow-hidden">
-            {/* Background AI Grid */}
-            <div className="absolute inset-0 bg-[url('https://transparenttextures.com')] opacity-10 pointer-events-none"></div>
-            <div className="absolute top-0 left-1/2 w-px h-full bg-cyan-500/5"></div>
-            
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/intel" element={<Intel />} />
-              <Route path="/missions" element={<Missions />} />
-              <Route path="/records" element={<Records />} />
-            </Routes>
-        </main>
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [showTop, setShowTop] = useState(false);
+
+
+  // ==========================================================
+  // SHOW BACK TO TOP BUTTON
+  // ==========================================================
+
+  useEffect(() => {
+
+    const handleScroll = () => {
+      setShowTop(window.scrollY > 600);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+
+  }, []);
+
+
+  // ==========================================================
+  // SMOOTH SCROLL
+  // ==========================================================
+
+  const scrollToSection = (id) => {
+
+    const section = document.getElementById(id);
+
+    if (section) {
+
+      section.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+
+    }
+
+    setMenuOpen(false);
+  };
+
+
+  return (
+
+    <div className="min-h-screen bg-[#020617] text-cyan-50 font-mono overflow-x-hidden">
+
+
+      {/* ======================================================
+          BACKGROUND SYSTEM GRID
+      ====================================================== */}
+
+      <div className="fixed inset-0 pointer-events-none z-0">
+
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(8,47,73,0.35),transparent_45%)]"></div>
+
+        <div className="absolute inset-0 opacity-[0.035]"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(34,211,238,0.5) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(34,211,238,0.5) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px'
+          }}
+        ></div>
+
+        <div className="absolute left-1/2 top-0 w-px h-full bg-cyan-500/[0.04]"></div>
+
       </div>
-    </Router>
+
+
+
+      {/* ======================================================
+          DESKTOP NAVIGATION
+      ====================================================== */}
+
+      <header className="fixed top-0 left-0 right-0 z-[100]">
+
+        <div className="mx-3 md:mx-6 mt-3">
+
+          <div className="max-w-7xl mx-auto">
+
+            <div className="bg-[#020817]/80 backdrop-blur-xl border border-cyan-500/20 rounded-2xl shadow-[0_0_30px_rgba(6,182,212,0.05)]">
+
+
+              <div className="h-16 px-4 md:px-6 flex items-center justify-between">
+
+
+                {/* LOGO */}
+
+                <button
+                  onClick={() => scrollToSection('home')}
+                  className="flex items-center gap-3 group"
+                >
+
+                  <div className="w-9 h-9 border border-cyan-500/40 rounded-lg flex items-center justify-center group-hover:border-cyan-400 transition-all">
+
+                    <Terminal
+                      size={17}
+                      className="text-cyan-400"
+                    />
+
+                  </div>
+
+                  <div className="text-left">
+
+                    <div className="text-sm font-black tracking-tight text-white">
+
+                      DHARUNIKA
+                      <span className="text-cyan-400">.B</span>
+
+                    </div>
+
+                    <div className="text-[7px] text-cyan-500/60 tracking-[0.25em] uppercase">
+
+                      SYSTEM_ONLINE
+
+                    </div>
+
+                  </div>
+
+                </button>
+
+
+
+                {/* DESKTOP MENU */}
+
+                <nav className="hidden md:flex items-center gap-1">
+
+                  <NavButton
+                    icon={<User size={14} />}
+                    label="HOME"
+                    onClick={() => scrollToSection('home')}
+                  />
+
+                  <NavButton
+                    icon={<Cpu size={14} />}
+                    label="INTEL"
+                    onClick={() => scrollToSection('intel')}
+                  />
+
+                  <NavButton
+                    icon={<Rocket size={14} />}
+                    label="MISSIONS"
+                    onClick={() => scrollToSection('missions')}
+                  />
+
+                  <NavButton
+                    icon={<Shield size={14} />}
+                    label="ARCHIVES"
+                    onClick={() => scrollToSection('records')}
+                  />
+
+                  <NavButton
+                    icon={<Award size={14} />}
+                    label="ACHIEVEMENTS"
+                    onClick={() => scrollToSection('achievements')}
+                  />
+
+                  <button
+                    onClick={() => scrollToSection('contact')}
+                    className="ml-2 px-4 py-2 bg-cyan-500 text-black rounded-lg text-[9px] font-black tracking-widest hover:bg-white transition-all"
+                  >
+
+                    CONNECT
+
+                  </button>
+
+                </nav>
+
+
+
+                {/* MOBILE MENU BUTTON */}
+
+                <button
+                  onClick={() => setMenuOpen(!menuOpen)}
+                  className="md:hidden w-9 h-9 border border-cyan-500/30 rounded-lg flex items-center justify-center text-cyan-400"
+                >
+
+                  {menuOpen
+                    ? <X size={18} />
+                    : <Menu size={18} />
+                  }
+
+                </button>
+
+              </div>
+
+
+
+              {/* ==================================================
+                  MOBILE MENU
+              ================================================== */}
+
+              {menuOpen && (
+
+                <div className="md:hidden border-t border-cyan-500/10 p-3 space-y-1">
+
+                  <MobileNav
+                    label="HOME"
+                    onClick={() => scrollToSection('home')}
+                  />
+
+                  <MobileNav
+                    label="TECH INTEL"
+                    onClick={() => scrollToSection('intel')}
+                  />
+
+                  <MobileNav
+                    label="MISSION LOGS"
+                    onClick={() => scrollToSection('missions')}
+                  />
+
+                  <MobileNav
+                    label="ARCHIVES"
+                    onClick={() => scrollToSection('records')}
+                  />
+
+                  <MobileNav
+                    label="ACHIEVEMENTS"
+                    onClick={() => scrollToSection('achievements')}
+                  />
+
+                  <MobileNav
+                    label="CONTACT"
+                    onClick={() => scrollToSection('contact')}
+                  />
+
+                </div>
+
+              )}
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+
+      {/* ======================================================
+          MAIN SCROLLING PORTFOLIO
+      ====================================================== */}
+
+      <main className="relative z-10">
+
+
+        {/* ====================================================
+            HOME
+        ==================================================== */}
+
+        <section
+          id="home"
+          className="scroll-mt-24"
+        >
+
+          <Home />
+
+        </section>
+
+
+
+        {/* ====================================================
+            TECH INTEL
+        ==================================================== */}
+
+        <section
+          id="intel"
+          className="scroll-mt-24 border-t border-cyan-500/5"
+        >
+
+          <SectionMarker label="01 // INTEL" />
+
+          <Intel />
+
+        </section>
+
+
+
+        {/* ====================================================
+            MISSIONS
+        ==================================================== */}
+
+        <section
+          id="missions"
+          className="scroll-mt-24 border-t border-cyan-500/5"
+        >
+
+          <SectionMarker label="02 // MISSIONS" />
+
+          <Missions />
+
+        </section>
+
+
+
+        {/* ====================================================
+            ARCHIVES
+        ==================================================== */}
+
+        <section
+          id="records"
+          className="scroll-mt-24 border-t border-cyan-500/5"
+        >
+
+          <SectionMarker label="03 // ARCHIVES" />
+
+          <Records />
+
+        </section>
+
+
+
+        {/* ====================================================
+            ACHIEVEMENTS
+        ==================================================== */}
+
+        <section
+          id="achievements"
+          className="scroll-mt-24 border-t border-cyan-500/5"
+        >
+
+          <SectionMarker label="04 // ACHIEVEMENTS" />
+
+          <Achievements />
+
+        </section>
+
+
+
+        {/* ====================================================
+            CONTACT
+        ==================================================== */}
+
+        <section
+          id="contact"
+          className="scroll-mt-24 border-t border-cyan-500/5"
+        >
+
+          <ContactSection />
+
+        </section>
+
+
+
+        {/* ====================================================
+            FOOTER
+        ==================================================== */}
+
+        <footer className="border-t border-cyan-500/10 py-10 px-6">
+
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+
+            <div className="text-[9px] text-white/30 uppercase tracking-[0.3em]">
+
+              DHARUNIKA.B // PORTFOLIO
+
+            </div>
+
+            <div className="text-[8px] text-cyan-500/30 uppercase tracking-widest">
+
+              React // Framer Motion // 2026
+
+            </div>
+
+            <div className="text-[8px] text-white/20 uppercase tracking-widest">
+
+              SYSTEM_END
+
+            </div>
+
+          </div>
+
+        </footer>
+
+      </main>
+
+
+
+      {/* ======================================================
+          FLOATING SOCIAL BAR
+      ====================================================== */}
+
+      <div className="hidden md:flex fixed left-5 bottom-8 z-[90] flex-col gap-3">
+
+        <SocialButton
+          href="https://github.com/Dharunika192006"
+          icon={<Github size={15} />}
+          label="GITHUB"
+        />
+
+        <SocialButton
+          href="https://www.linkedin.com/in/dharunika-balamoorthy-43a027365/"
+          icon={<Linkedin size={15} />}
+          label="LINKEDIN"
+        />
+
+        <SocialButton
+          href="mailto:dharunikabalamoorthy@gmail.com"
+          icon={<Mail size={15} />}
+          label="EMAIL"
+        />
+
+      </div>
+
+
+
+      {/* ======================================================
+          BACK TO TOP
+      ====================================================== */}
+
+      {showTop && (
+
+        <button
+          onClick={() => scrollToSection('home')}
+          className="fixed right-5 bottom-8 z-[90] w-11 h-11 bg-cyan-500 text-black rounded-xl flex items-center justify-center hover:bg-white transition-all shadow-[0_0_25px_rgba(6,182,212,0.25)]"
+          aria-label="Back to top"
+        >
+
+          <ArrowUp size={18} />
+
+        </button>
+
+      )}
+
+    </div>
+
   );
 }
 
-function NavItem({ to, icon, label }) {
+
+
+// ============================================================
+// NAV BUTTON
+// ============================================================
+
+function NavButton({ icon, label, onClick }) {
+
   return (
-    <Link to={to} className="flex items-center gap-4 p-3 rounded-lg hover:bg-cyan-500/10 hover:text-cyan-400 transition-all group">
-      <span className="text-cyan-500 group-hover:animate-pulse">{icon}</span>
-      <span className="hidden md:block text-xs font-bold uppercase tracking-widest">{label}</span>
-    </Link>
+
+    <button
+      onClick={onClick}
+      className="flex items-center gap-2 px-3 py-2 rounded-lg text-[9px] font-bold tracking-widest text-white/50 hover:text-cyan-400 hover:bg-cyan-500/10 transition-all"
+    >
+
+      {icon}
+
+      {label}
+
+    </button>
+
   );
+
+}
+
+
+
+// ============================================================
+// MOBILE NAV
+// ============================================================
+
+function MobileNav({ label, onClick }) {
+
+  return (
+
+    <button
+      onClick={onClick}
+      className="w-full text-left px-4 py-3 rounded-lg text-[10px] font-bold tracking-widest text-white/60 hover:text-cyan-400 hover:bg-cyan-500/10"
+    >
+
+      {label}
+
+    </button>
+
+  );
+
+}
+
+
+
+// ============================================================
+// SECTION MARKER
+// ============================================================
+
+function SectionMarker({ label }) {
+
+  return (
+
+    <div className="max-w-7xl mx-auto px-6 md:px-10 pt-10">
+
+      <div className="flex items-center gap-3">
+
+        <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+
+        <span className="text-[8px] md:text-[9px] font-bold tracking-[0.4em] text-cyan-500/50 uppercase">
+
+          {label}
+
+        </span>
+
+        <div className="h-px flex-1 bg-cyan-500/10"></div>
+
+      </div>
+
+    </div>
+
+  );
+
+}
+
+
+
+// ============================================================
+// SOCIAL BUTTON
+// ============================================================
+
+function SocialButton({ href, icon, label }) {
+
+  return (
+
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      title={label}
+      className="group w-10 h-10 rounded-xl border border-cyan-500/20 bg-black/60 backdrop-blur-md flex items-center justify-center text-cyan-400 hover:bg-cyan-500 hover:text-black hover:border-cyan-400 transition-all"
+    >
+
+      {icon}
+
+    </a>
+
+  );
+
+}
+
+
+
+// ============================================================
+// CONTACT SECTION
+// ============================================================
+
+function ContactSection() {
+
+  return (
+
+    <div className="min-h-[70vh] flex items-center px-6 md:px-10 py-24">
+
+      <div className="max-w-5xl mx-auto w-full">
+
+        <div className="text-center mb-14">
+
+          <div className="text-cyan-500 text-[9px] tracking-[0.4em] uppercase mb-4">
+
+            FINAL_TRANSMISSION
+
+          </div>
+
+          <h2 className="text-4xl md:text-6xl font-black uppercase text-white">
+
+            Let's
+
+            <span className="text-cyan-400"> Connect</span>
+
+          </h2>
+
+          <p className="text-sm text-white/40 max-w-xl mx-auto mt-5 leading-relaxed">
+
+            Open to opportunities, collaborations and conversations
+            around AI, Data Science, Software Development and
+            innovative technology.
+
+          </p>
+
+        </div>
+
+
+
+        <div className="grid md:grid-cols-3 gap-4">
+
+
+          <a
+            href="https://github.com/Dharunika192006"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+          >
+
+            <Github className="text-cyan-400 mb-5" />
+
+            <div className="text-white font-bold text-sm">
+              GITHUB
+            </div>
+
+            <div className="text-[9px] text-white/30 mt-2">
+              VIEW_SOURCE_CODE
+            </div>
+
+          </a>
+
+
+
+          <a
+            href="https://www.linkedin.com/in/dharunika-balamoorthy-43a027365/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+          >
+
+            <Linkedin className="text-cyan-400 mb-5" />
+
+            <div className="text-white font-bold text-sm">
+              LINKEDIN
+            </div>
+
+            <div className="text-[9px] text-white/30 mt-2">
+              PROFESSIONAL_NETWORK
+            </div>
+
+          </a>
+
+
+
+          <a
+            href="mailto:dharunikabalamoorthy@gmail.com"
+            className="group p-6 bg-white/[0.02] border border-white/10 rounded-2xl hover:border-cyan-500/40 hover:bg-cyan-500/5 transition-all"
+          >
+
+            <Mail className="text-cyan-400 mb-5" />
+
+            <div className="text-white font-bold text-sm">
+              EMAIL
+            </div>
+
+            <div className="text-[9px] text-white/30 mt-2">
+              START_A_CONVERSATION
+            </div>
+
+          </a>
+
+        </div>
+
+
+
+        <div className="mt-10 text-center">
+
+          <a
+            href="https://timely-fox-fcdcc8.netlify.app/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-500 text-black rounded-xl text-[10px] font-black tracking-widest hover:bg-white transition-all"
+          >
+
+            VIEW_LIVE_NIDS_PROJECT
+
+            <ExternalLink size={14} />
+
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  );
+
 }
