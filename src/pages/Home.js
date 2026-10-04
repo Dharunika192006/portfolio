@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Rocket, Shield, ChevronRight, Cpu, Code2, Terminal, Activity, Mail, Database, Brain } from 'lucide-react';
+import { Rocket, ChevronRight, Code2, Activity, Database, Brain } from 'lucide-react';
 import profilePic from '../profilee.jpg';
 
 export default function Home() {
@@ -56,3 +56,4 @@ export default function Home() {
 function Stat({ icon, value, label }) {
   return <div className="rounded-2xl border border-white/10 bg-white/[.035] p-4 hover:border-cyan-400/30 hover:-translate-y-1 transition"><div className="text-cyan-300 mb-2">{icon}</div><div className="text-xl font-black text-white">{value}</div><div className="text-[8px] text-white/35 tracking-[.2em] mt-1">{label}</div></div>;
 }
+
