@@ -15,86 +15,15 @@ export default function Missions() {
 
   const missions = [
 
-    // =========================
-    // PROJECT 01
-    // =========================
-    {
-      title: "AI-BASED INTERVIEW QUESTION GENERATOR",
-      id: "M-01",
-      date: "2025-26",
-      gitLink:
-        "https://github.com/Dharunika192006/AI-BASED-INTERVIEW-QUESTIONS-GENERATOR",
-      hasAI3D: true,
-      desc: [
-        "Architected an automated intelligence system using Java and DBMS.",
-        "Engineered logic for dynamic, role-specific technical questions.",
-        "Optimized database queries for high-speed question retrieval."
-      ],
-      tech: "Java / SQL / AI Logic"
-    },
+    // =====================================================
+    // PROJECT 01 - HYBRID CSA-PSO NETWORK INTRUSION DETECTION
+    // =====================================================
 
-    // =========================
-    // PROJECT 02
-    // =========================
-    {
-      title: "PHISHING DETECTION FRAMEWORK",
-      id: "M-02",
-      date: "2025-26",
-      gitLink:
-        "https://github.com/Dharunika192006",
-      hasPhish3D: true,
-      desc: [
-        "Explainable Federated Learning Framework for real-time phishing detection.",
-        "Uses decentralized learning to improve data privacy and security.",
-        "Provides explainable insights into malicious email patterns."
-      ],
-      tech: "Python / Federated Learning"
-    },
-
-    // =========================
-    // PROJECT 03
-    // =========================
-    {
-      title: "DEPARTMENTAL STORE MGMT SYSTEM",
-      id: "M-03",
-      date: "2024-25",
-      gitLink:
-        "https://github.com/Dharunika192006",
-      has3D: true,
-      desc: [
-        "Full-stack Java solution for real-time retail inventory management.",
-        "Synchronized multi-table DBMS for stock and employee tracking.",
-        "Implemented efficient algorithms for rapid product identification."
-      ],
-      tech: "Java / DBMS / UI"
-    },
-
-    // =========================
-    // PROJECT 04
-    // =========================
-    {
-      title: "DOUBLE-ENDED QUEUE (DEQUE)",
-      id: "M-04",
-      date: "2024-25",
-      gitLink:
-        "https://github.com/Dharunika192006",
-      hasDeque3D: true,
-      desc: [
-        "Technical implementation demonstrating the efficiency of Deque structures.",
-        "Optimized memory management with O(1) insertion and deletion operations.",
-        "Simulated real-time buffer scenarios for logic validation."
-      ],
-      tech: "C++ / Data Structures"
-    },
-
-    // =========================
-    // PROJECT 05 - NEW NIDS PROJECT
-    // =========================
     {
       title:
         "HYBRID CSA-PSO OPTIMIZED MULTI-CLASS SVM FOR NETWORK INTRUSION DETECTION",
 
-      id: "M-05",
+      id: "M-01",
 
       date: "2025-26",
 
@@ -107,24 +36,146 @@ export default function Missions() {
       desc: [
         "Developed a machine learning-based intrusion detection system for identifying and classifying network attacks in cloud computing environments.",
 
-        "Used XGBoost for feature selection and a hybrid Crow Search Algorithm with Particle Swarm Optimization for SVM parameter optimization.",
+        "Used XGBoost for effective feature selection and a hybrid Crow Search Algorithm with Particle Swarm Optimization for SVM parameter optimization.",
 
         "Implemented Multi-Class SVM for attack classification with real-time network packet capture and monitoring using Python and Scapy."
       ],
 
       tech:
         "Python / XGBoost / SVM / CSA-PSO / Scapy"
+    },
+
+
+    // =====================================================
+    // PROJECT 02 - DEPARTMENTAL STORE
+    // =====================================================
+
+    {
+      title:
+        "DEPARTMENTAL STORE MGMT SYSTEM",
+
+      id: "M-02",
+
+      date: "2024-25",
+
+      gitLink:
+        "https://github.com/Dharunika192006",
+
+      has3D: true,
+
+      desc: [
+        "Full-stack Java solution for real-time retail inventory management.",
+
+        "Synchronized multi-table DBMS for stock, employee, customer, and product tracking.",
+
+        "Implemented efficient database operations for rapid product identification and management."
+      ],
+
+      tech:
+        "Java / MySQL / DBMS / UI"
+    },
+
+
+    // =====================================================
+    // PROJECT 03 - AI INTERVIEW QUESTION GENERATOR
+    // =====================================================
+
+    {
+      title:
+        "AI-BASED INTERVIEW QUESTION GENERATOR",
+
+      id: "M-03",
+
+      date: "2025-26",
+
+      gitLink:
+        "https://github.com/Dharunika192006/AI-BASED-INTERVIEW-QUESTIONS-GENERATOR",
+
+      hasAI3D: true,
+
+      desc: [
+        "Developed an automated system for generating technical interview questions based on specific roles and technologies.",
+
+        "Engineered logic for dynamic, role-specific question generation and retrieval.",
+
+        "Integrated database management for organizing and efficiently retrieving interview questions."
+      ],
+
+      tech:
+        "Java / SQL / AI Logic"
+    },
+
+
+    // =====================================================
+    // PROJECT 04 - PHISHING DETECTION
+    // =====================================================
+
+    {
+      title:
+        "PHISHING DETECTION FRAMEWORK",
+
+      id: "M-04",
+
+      date: "2025-26",
+
+      gitLink:
+        "https://github.com/Dharunika192006",
+
+      hasPhish3D: true,
+
+      desc: [
+        "Developed an Explainable Federated Learning framework for real-time phishing detection.",
+
+        "Applied decentralized machine learning to improve privacy while detecting malicious email patterns.",
+
+        "Integrated explainability techniques to provide interpretable insights into phishing predictions."
+      ],
+
+      tech:
+        "Python / Federated Learning / AI-ML"
+    },
+
+
+    // =====================================================
+    // PROJECT 05 - DOUBLE ENDED QUEUE
+    // =====================================================
+
+    {
+      title:
+        "DOUBLE-ENDED QUEUE (DEQUE)",
+
+      id: "M-05",
+
+      date: "2024-25",
+
+      gitLink:
+        "https://github.com/Dharunika192006",
+
+      hasDeque3D: true,
+
+      desc: [
+        "Technical implementation demonstrating the efficiency of Double-Ended Queue data structures.",
+
+        "Optimized insertion and deletion operations at both ends with O(1) time complexity.",
+
+        "Simulated real-time buffer scenarios to validate queue operations and data structure logic."
+      ],
+
+      tech:
+        "C++ / Data Structures / Algorithms"
     }
 
   ];
+
 
   return (
 
     <div className="p-4 md:p-10 pt-28 max-w-7xl mx-auto mb-20">
 
-      {/* =========================
+
+      {/* =====================================================
           PAGE HEADER
-      ========================= */}
+      ===================================================== */}
 
       <div className="mb-12 text-center">
 
@@ -143,9 +194,10 @@ export default function Missions() {
       </div>
 
 
-      {/* =========================
+
+      {/* =====================================================
           INTERNSHIP HUD
-      ========================= */}
+      ===================================================== */}
 
       <div className="mb-12 p-6 md:p-8 rounded-3xl bg-[#0a1930]/40 border border-cyan-500/20 backdrop-blur-md flex flex-col md:flex-row justify-between items-center gap-6">
 
@@ -188,9 +240,10 @@ export default function Missions() {
       </div>
 
 
-      {/* =========================
+
+      {/* =====================================================
           PROJECT MISSION GRID
-      ========================= */}
+      ===================================================== */}
 
       <div className="grid gap-8">
 
@@ -204,9 +257,9 @@ export default function Missions() {
             <div className="flex flex-col lg:flex-row items-center gap-10">
 
 
-              {/* =========================
+              {/* =====================================================
                   3D VISUAL SECTION
-              ========================= */}
+              ===================================================== */}
 
               {(m.has3D ||
                 m.hasPhish3D ||
@@ -243,14 +296,15 @@ export default function Missions() {
               )}
 
 
-              {/* =========================
+
+              {/* =====================================================
                   PROJECT INFORMATION
-              ========================= */}
+              ===================================================== */}
 
               <div className="flex-1 w-full text-left">
 
 
-                {/* TITLE + DATE */}
+                {/* PROJECT TITLE + DATE */}
 
                 <div className="flex justify-between items-start mb-4">
 
@@ -280,9 +334,10 @@ export default function Missions() {
                 </div>
 
 
-                {/* =========================
+
+                {/* =====================================================
                     PROJECT DESCRIPTION
-                ========================= */}
+                ===================================================== */}
 
                 <div className="space-y-3 mb-8">
 
@@ -311,14 +366,15 @@ export default function Missions() {
                 </div>
 
 
-                {/* =========================
-                    PROJECT BUTTONS
-                ========================= */}
+
+                {/* =====================================================
+                    PROJECT LINKS
+                ===================================================== */}
 
                 <div className="flex flex-wrap gap-3">
 
 
-                  {/* GITHUB BUTTON */}
+                  {/* GITHUB SOURCE BUTTON */}
 
                   <a
                     href={m.gitLink}
@@ -332,6 +388,7 @@ export default function Missions() {
                     OPEN_GIT_SOURCE
 
                   </a>
+
 
 
                   {/* LIVE DEMO BUTTON */}
