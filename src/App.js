@@ -484,7 +484,7 @@ export default function App() {
 
             <div className="text-[8px] text-cyan-300/50 uppercase tracking-widest">
 
-              REACT // AI // DATA // SOFTWARE
+              REACT // INFORMATION TECHNOLOGY // DATA // SOFTWARE
 
             </div>
 
